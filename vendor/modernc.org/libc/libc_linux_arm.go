@@ -439,11 +439,21 @@ func Xmkdir(t *TLS, path uintptr, mode types.Mode_t) int32 {
 	return 0
 }
 
-// int sscanf(const char *str, const char *format, ...);
-func Xsscanf(t *TLS, str, format, va uintptr) int32 {
-	r := scanf(strings.NewReader(GoString(str)), format, va)
-	// if dmesgs {
-	// 	dmesg("%v: %q %q: %d", origin(1), GoString(str), GoString(format), r)
-	// }
-	return r
+//TODO- // int sscanf(const char *str, const char *format, ...);
+//TODO- func Xsscanf(t *TLS, str, format, va uintptr) int32 {
+//TODO- 	r := scanf(strings.NewReader(GoString(str)), format, va)
+//TODO- 	// if dmesgs {
+//TODO- 	// 	dmesg("%v: %q %q: %d", origin(1), GoString(str), GoString(format), r)
+//TODO- 	// }
+//TODO- 	return r
+//TODO- }
+
+// int setrlimit(int resource, const struct rlimit *rlim);
+func Xsetrlimit64(t *TLS, resource int32, rlim uintptr) int32 {
+	if _, _, err := unix.Syscall(unix.SYS_SETRLIMIT, uintptr(resource), uintptr(rlim), 0); err != 0 {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
 }

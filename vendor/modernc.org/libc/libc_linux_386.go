@@ -456,11 +456,12 @@ func Xfopen64(t *TLS, pathname, mode uintptr) uintptr {
 	return 0
 }
 
-// int sscanf(const char *str, const char *format, ...);
-func Xsscanf(t *TLS, str, format, va uintptr) int32 {
-	r := scanf(strings.NewReader(GoString(str)), format, va)
-	// if dmesgs {
-	// 	dmesg("%v: %q %q: %d", origin(1), GoString(str), GoString(format), r)
-	// }
-	return r
+// int setrlimit(int resource, const struct rlimit *rlim);
+func Xsetrlimit64(t *TLS, resource int32, rlim uintptr) int32 {
+	if _, _, err := unix.Syscall(unix.SYS_SETRLIMIT, uintptr(resource), uintptr(rlim), 0); err != 0 {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
 }
