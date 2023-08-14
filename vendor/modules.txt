@@ -991,7 +991,7 @@ modernc.org/cc/v3
 # modernc.org/ccgo/v3 v3.9.4
 ## explicit; go 1.15
 modernc.org/ccgo/v3/lib
-# modernc.org/libc v1.24.1
+# modernc.org/libc v1.23.0
 ## explicit; go 1.18
 modernc.org/libc
 modernc.org/libc/errno

@@ -154,7 +154,7 @@ require (
 	modernc.org/b v1.0.0 // indirect
 	modernc.org/cc/v3 v3.33.5 // indirect
 	modernc.org/ccgo/v3 v3.9.4 // indirect
-	modernc.org/libc v1.24.1 // indirect
+	modernc.org/libc v1.23.0 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.7.0 // indirect
 	modernc.org/opt v0.1.1 // indirect
